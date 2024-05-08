@@ -99,6 +99,11 @@ namespace BurningMan.Controller
             {
                 rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
+            if (!IsGrounded()) // add  if gun isn't empty
+            {
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * _jumpForce/4, ForceMode2D.Impulse);
+            }
         }
 
         #endregion
