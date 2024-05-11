@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BurningMan.Manager;
 using UnityEngine;
 
 namespace BurningMan.Controller
@@ -20,21 +21,22 @@ namespace BurningMan.Controller
         void Start()
         {
             mainCamera = Camera.main;
-            // Kamera açýsýna göre sol ve sað sýnýrlarý hesapla
+            // Kamera aï¿½ï¿½sï¿½na gï¿½re sol ve saï¿½ sï¿½nï¿½rlarï¿½ hesapla
             leftLimit = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.transform.position.z)).x;
             rightLimit = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, mainCamera.transform.position.z)).x;
+            SceneLoader.Instance.loaderUI.SetActive(false);
         }
 
         void FixedUpdate()
         {
             if (player.transform.position.y<transform.position.y)
             {
-                // Player'ý y ekseninde smooth bir þekilde takip et
+                // Player'ï¿½ y ekseninde smooth bir ï¿½ekilde takip et
                 Vector3 desiredPosition = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
                 Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
                 transform.position = smoothedPosition;
 
-                // Player'ýn kamera sýnýrlarýnýn dýþýna çýkmasýný engelleme
+                // Player'ï¿½n kamera sï¿½nï¿½rlarï¿½nï¿½n dï¿½ï¿½ï¿½na ï¿½ï¿½kmasï¿½nï¿½ engelleme
                 float clampedX = Mathf.Clamp(transform.position.x, leftLimit, rightLimit);
                 transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 

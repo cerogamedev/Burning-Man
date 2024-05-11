@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mainCharacter_jumpup
+  m_Name: Spider_Patroll
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 5187769389910457347, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+      value: {fileID: 856136199469518462, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
     - time: 0.1
-      value: {fileID: 4141599041752691006, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+      value: {fileID: 906849984000737556, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
     - time: 0.2
-      value: {fileID: -3486841364425815329, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+      value: {fileID: -7870007272864148279, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
     - time: 0.3
-      value: {fileID: -6364002720217278510, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+      value: {fileID: -2194730303495688222, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
     - time: 0.36
-      value: {fileID: -6364002720217278510, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+      value: {fileID: -2194730303495688222, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,11 +48,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 5187769389910457347, guid: e8705a245fff8e14f97502b93469664c, type: 3}
-    - {fileID: 4141599041752691006, guid: e8705a245fff8e14f97502b93469664c, type: 3}
-    - {fileID: -3486841364425815329, guid: e8705a245fff8e14f97502b93469664c, type: 3}
-    - {fileID: -6364002720217278510, guid: e8705a245fff8e14f97502b93469664c, type: 3}
-    - {fileID: -6364002720217278510, guid: e8705a245fff8e14f97502b93469664c, type: 3}
+    - {fileID: 856136199469518462, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
+    - {fileID: 906849984000737556, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
+    - {fileID: -7870007272864148279, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
+    - {fileID: -2194730303495688222, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
+    - {fileID: -2194730303495688222, guid: 70a74781c2695904ea315bf3abed1912, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

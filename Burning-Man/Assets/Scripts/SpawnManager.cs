@@ -22,7 +22,7 @@ namespace BurningMan.Manager
         void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").transform;
-            _player = _levelStart;
+            _player.position = new Vector2(_levelStart.position.x, _levelStart.position.y+10);;
 
             LevelStart();
         }
@@ -30,7 +30,7 @@ namespace BurningMan.Manager
         public void LevelStart()
         {
             var TotalNumber = 2 *( _obstacleNumber + _enemyNumber);
-            _gap = Mathf.Abs(_levelEnd.position.y - _levelStart.position.y)/TotalNumber;
+            _gap = Mathf.Abs((_levelEnd.position.y+10) - (_levelStart.position.y-10))/TotalNumber;
 
             for (float i = 0; i < TotalNumber; i++)
             {
