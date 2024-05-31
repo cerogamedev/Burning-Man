@@ -21,7 +21,6 @@ namespace BurningMan.Controller
         void Start()
         {
             mainCamera = Camera.main;
-            // Kamera a��s�na g�re sol ve sa� s�n�rlar� hesapla
             leftLimit = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.transform.position.z)).x;
             rightLimit = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, mainCamera.transform.position.z)).x;
             SceneLoader.Instance.loaderUI.SetActive(false);
@@ -31,12 +30,10 @@ namespace BurningMan.Controller
         {
             if (player.transform.position.y<transform.position.y)
             {
-                // Player'� y ekseninde smooth bir �ekilde takip et
                 Vector3 desiredPosition = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
                 Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
                 transform.position = smoothedPosition;
 
-                // Player'�n kamera s�n�rlar�n�n d���na ��kmas�n� engelleme
                 float clampedX = Mathf.Clamp(transform.position.x, leftLimit, rightLimit);
                 transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 

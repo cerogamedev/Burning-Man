@@ -26,13 +26,23 @@ namespace BurningMan.Controller
         public Animator anim;
         private IPlayerState currentState;
 
+        private SoundManager sound;
+
         private void OnEnable()
         {
+            sound = SoundManager.Instance;
             LeftButtonPressed.IsLeftPressDone += GotToLeftDone;
             RightButtonController.IsRightPressDone += GotToRightDone;
 
             JumpButtonController.JumpButtonPressed += JumpPressed;
 
+        }
+        void OnDisable()
+        {
+            LeftButtonPressed.IsLeftPressDone -= GotToLeftDone;
+            RightButtonController.IsRightPressDone -= GotToRightDone;
+
+            JumpButtonController.JumpButtonPressed -= JumpPressed;
         }
         void Awake()
         {
@@ -87,12 +97,14 @@ namespace BurningMan.Controller
                 if (IsGrounded())
                 {
                     rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+                    sound.PlaySfx(sound.Jump);
                 }
                 if (!IsGrounded() && PlayerAttack.Instance.CurrentBullet > 0) // add  if gun isn't empty
                 {
                     rb.velocity = Vector2.zero;
-                    rb.AddForce(Vector2.up * _jumpForce/4, ForceMode2D.Impulse);
+                    rb.AddForce(Vector2.up * _jumpForce/8, ForceMode2D.Impulse);
                     PlayerAttack.Instance.FireBullet();
+                    sound.PlaySfx(sound.Fire);
                 }
             }
 

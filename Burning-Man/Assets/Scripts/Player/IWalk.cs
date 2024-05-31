@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using BurningMan.Controller;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 namespace BurningMan
 {
@@ -21,33 +23,15 @@ namespace BurningMan
         {
             if (LeftButtonPressed.Instance.IsLeftButtonPressed) 
             { 
-                player.transform.Translate(Vector2.left * player._moveSpeed * Time.deltaTime);
+                player.rb.AddForce(Vector2.left*player._moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 player.transform.localScale =new (-1f,1f,1f);            
             }
             if (RightButtonController.Instance.IsRightButtonPressed) 
             { 
-                player.transform.Translate(Vector2.right * player._moveSpeed * Time.deltaTime);
+                player.rb.AddForce(Vector2.right*player._moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 player.transform.localScale =new (1f,1f,1f);
             }
 
-
-            if (player._goToLeftDone)
-            {
-                player.transform.Translate(Vector2.left * player._lastSpeedInUse * Time.deltaTime);
-                player._lastSpeedInUse -= 0.1f;
-            }
-            if (player._goToRightDone)
-            {
-                player.transform.Translate(Vector2.right * player._lastSpeedInUse * Time.deltaTime);
-                player._lastSpeedInUse -= 0.1f;
-
-            }
-            if (player._lastSpeedInUse < 0.2f)
-            {
-                player._goToLeftDone = false;
-                player._goToRightDone = false;
-                player._lastSpeedInUse = 0;
-            }
 
             if (!LeftButtonPressed.Instance.IsLeftButtonPressed && !RightButtonController.Instance.IsRightButtonPressed && player.isGrounded)
             {

@@ -55,8 +55,8 @@ namespace BurningMan.Manager
             for (int j = 0; j < _enemyNumber; j++)
             {
                 int _randomIndexPointer = Random.Range(0, _spawnPoints.Count);
-                int _randomIndexObstacle = Random.Range(0, _enemies.Length);
-                Instantiate(_enemies[_randomIndexObstacle], _spawnPoints[_randomIndexPointer].transform.position, Quaternion.identity);
+                int _randomIndexObstacle = Random.Range(0, _obstacles.Length);
+                Instantiate(_obstacles[_randomIndexObstacle], _spawnPoints[_randomIndexPointer].transform.position, Quaternion.identity);
                 _spawnPoints.Remove(_spawnPoints[_randomIndexPointer]);
 
             }

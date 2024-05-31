@@ -14,6 +14,7 @@ namespace BurningMan
         public TextMeshProUGUI HealthText;
         private PlayerController player;
         public float BounceDuration;
+        public float BouncePower; 
         public float DamageableDuration;
         public bool canDamageable = true;
         private SpriteRenderer playerSprite;
@@ -27,8 +28,6 @@ namespace BurningMan
             maxHealth = 4;
             health = maxHealth;
         }
-
-        // Update is called once per frame
         void Update()
         {
             healthSlider.value = health/maxHealth;
@@ -37,6 +36,12 @@ namespace BurningMan
         public void SetHealth(float setHealth)
         {
             health += setHealth;
+            StartCoroutine(ScreenShake.Instance.StartShake(0.2f,0.05f));
+            SoundManager.Instance.PlaySfx(SoundManager.Instance.LoseHearth);
+            if (health==0)
+            {
+                PlayerController.Instance.ChangeState(new IDead());
+            }
         }
         public float GetHealth()
         {
@@ -46,12 +51,13 @@ namespace BurningMan
         {
             maxHealth = maxHealthAmount;
         }
-        void OnTriggerEnter2D(Collider2D other)
+
+        void OnTriggerEnter2D(Collider2D other0)
         {
-            if (other.CompareTag("AttackObject") && canDamageable)
+            if (other0.transform.tag == "AttackObject" && canDamageable)
             {
                 SetHealth(-1);
-                Vector2 forceDirection = (transform.position - other.transform.position).normalized;
+                Vector2 forceDirection = (transform.position - other0.transform.position).normalized;
                 StartCoroutine(ApplyForce(forceDirection, BounceDuration));
                 StartCoroutine(CanTakeDamage());
             }
@@ -70,9 +76,6 @@ namespace BurningMan
                 canDamageable = true;
                 playerSprite.color = Color.white;
         }
-        void OnTriggerStay2D(Collider2D other)
-        {
-            if (!canDamageable) {player.rb.AddForce(Vector2.up * 8000, ForceMode2D.Impulse);}
-        }
+
     }
 }

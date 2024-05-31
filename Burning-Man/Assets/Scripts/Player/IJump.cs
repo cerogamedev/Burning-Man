@@ -19,12 +19,12 @@ namespace BurningMan
         {
             if (LeftButtonPressed.Instance.IsLeftButtonPressed) 
             { 
-                player.transform.Translate(Vector2.left * player._moveSpeed * Time.deltaTime);
+                player.rb.AddForce(Vector2.left*player._moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 player.transform.localScale =new (-1f,1f,1f);            
             }
             if (RightButtonController.Instance.IsRightButtonPressed) 
             { 
-                player.transform.Translate(Vector2.right * player._moveSpeed * Time.deltaTime);
+                player.rb.AddForce(Vector2.right*player._moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 player.transform.localScale =new (1f,1f,1f);
             }
             if (player.rb.velocity.y < -0.2f) {player.anim.Play("mainCharacter_jumpdown");}
